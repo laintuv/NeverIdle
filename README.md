@@ -1,3 +1,24 @@
+# NeverIdle AutoStart
+
+systemctl edit --full --force NeverIdle.service
+```shell
+[Unit]
+Description=NeverIdle service
+ 
+[Service]
+Type=simple
+ExecStart=/root/NeverIdle -c 9h -m 1 -n 18h
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+ 
+[Install]
+WantedBy=multi-user.target
+```
+
+systemctl enable --now NeverIdle.service
+
+
 # NeverIdle
 
 *我喜欢你，但别删我机，好么？*
